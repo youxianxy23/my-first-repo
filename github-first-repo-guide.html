@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub 新手建仓图文指南（零基础 · 含日语）</title>
+<style>
+  :root{
+    --bg:#f6f8fa; --card:#ffffff; --border:#d0d7de; --border-soft:#e1e4e8;
+    --text:#1f2328; --muted:#656d76; --blue:#0969da; --green:#1f883d; --green-dark:#1a7f37;
+    --red:#cf222e; --chip:#ddf4ff; --chip-text:#0a3069; --jp:#9a2d3b; --jp-bg:#fbeef0;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;}
+  .wrap{max-width:920px;margin:0 auto;padding:24px 18px 80px;}
+  header.top{background:linear-gradient(0deg,#1f2328,#32383f);color:#fff;border-radius:14px;padding:26px 28px;margin-bottom:22px;}
+  header.top h1{margin:0 0 6px;font-size:23px;}
+  header.top p{margin:0;color:#c9d1d9;font-size:14px;}
+  .note{background:#fff8c5;border:1px solid #d4a72c66;border-radius:10px;padding:12px 16px;font-size:14px;margin-bottom:22px;}
+  .checklist{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:26px;}
+  .checklist h3{margin:0 0 10px;font-size:15px;}
+  .checklist label{display:block;padding:4px 0;font-size:14px;color:#333;}
+  h2.part{font-size:19px;border-left:5px solid var(--green);padding-left:12px;margin:34px 0 6px;}
+  .part-sub{color:var(--muted);font-size:13.5px;margin:0 0 16px;}
+  .step{display:flex;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;align-items:flex-start;}
+  .step .num{flex:0 0 34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:600;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .step .body{flex:1;min-width:0;}
+  .step h4{margin:2px 0 4px;font-size:15.5px;}
+  .step p{margin:4px 0;font-size:14px;color:#333;}
+  .step .tip{font-size:13px;color:var(--muted);background:#f6f8fa;border-radius:8px;padding:8px 10px;margin-top:8px;}
+  .jp{color:var(--jp);}
+  .screen{border:1px solid var(--border);border-radius:10px;background:var(--card);margin-top:10px;overflow:hidden;}
+  .screen-bar{background:#f6f8fa;border-bottom:1px solid var(--border-soft);padding:8px 12px;font-size:12.5px;color:var(--muted);}
+  .screen-body{padding:16px;}
+  .gh-h{font-size:17px;font-weight:600;margin:0 0 14px;}
+  .gh-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+  .gh-label{font-size:13px;font-weight:600;display:block;margin-bottom:4px;}
+  .gh-owner{border:1px solid var(--border);border-radius:6px;padding:6px 10px;background:#fff;font-size:13px;color:var(--text);}
+  .gh-slash{color:var(--muted);}
+  .gh-input{width:100%;border:1px solid var(--border);border-radius:6px;padding:7px 10px;font-size:13px;background:#fff;color:var(--text);}
+  .gh-input::placeholder{color:#8c959f;}
+  .gh-hint{font-size:12px;color:var(--muted);margin-top:4px;}
+  .gh-radio{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:8px;font-size:13.5px;}
+  .gh-radio.sel{border-color:var(--green);background:#f0fdf4;}
+  .dot{width:16px;height:16px;border-radius:50%;border:2px solid #c4c9d0;flex:0 0 16px;}
+  .dot.on{border-color:var(--green);background:var(--green);box-shadow:inset 0 0 0 3px #fff;}
+  .gh-check{display:flex;align-items:flex-start;gap:9px;padding:8px 0;font-size:13.5px;}
+  .box{width:16px;height:16px;border:2px solid #c4c9d0;border-radius:4px;flex:0 0 16px;margin-top:1px;}
+  .box.on{background:var(--green);border-color:var(--green);position:relative;}
+  .box.on::after{content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+  .gh-btn{background:var(--green);color:#fff;border:none;border-radius:8px;padding:9px 16px;font-size:14px;font-weight:600;cursor:pointer;display:inline-block;}
+  .gh-btn.ghost{background:#f6f8fa;border:1px solid var(--border);color:var(--text);font-weight:500;}
+  .divider{height:1px;background:var(--border-soft);margin:14px 0;}
+  .badge{display:inline-block;min-width:20px;height:20px;line-height:20px;text-align:center;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:600;padding:0 5px;}
+  .pill{display:inline-block;background:var(--chip);color:var(--chip-text);border-radius:20px;padding:2px 10px;font-size:12.5px;font-weight:600;}
+  table.gloss{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;font-size:13.5px;}
+  table.gloss th,table.gloss td{border-bottom:1px solid var(--border-soft);padding:9px 12px;text-align:left;}
+  table.gloss th{background:#f6f8fa;font-size:13px;}
+  table.gloss td.en{font-weight:600;}
+  table.gloss td.jp{color:var(--jp);}
+  .success{background:#f0fdf4;border:1px solid #5ac46a66;border-radius:10px;padding:14px 16px;font-size:14px;}
+  footer{margin-top:36px;font-size:13px;color:var(--muted);text-align:center;}
+  code{background:#eff1f3;padding:1px 6px;border-radius:5px;font-size:12.5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <h1>GitHub 新手建仓图文指南</h1>
+    <p>零基础也能照做 · 不用写代码 · 不用命令行 · 顺便记英语和日语</p>
+  </header>
+
+  <div class="note">
+    <strong>开始之前：</strong>你需要先有一个 GitHub 账号。打开 <code>github.com</code> → 点右上角 <b>Sign up</b> 用邮箱注册（免费）。注册并登录后，再按下面的步骤操作。
+  </div>
+
+  <div class="checklist">
+    <h3>完成度清单（每做一步打勾）</h3>
+    <label><input type="checkbox"> 已注册并登录 github.com</label>
+    <label><input type="checkbox"> 建好了第一个仓库（Repository）</label>
+    <label><input type="checkbox"> 成功上传了一个文件</label>
+    <label><input type="checkbox"> 写了一条提交说明（commit message）</label>
+    <label><input type="checkbox"> 看懂了界面上的英文单词</label>
+  </div>
+
+  <!-- ========== PART 1 ========== -->
+  <h2 class="part">第一部分：在网页上建好第一个仓库</h2>
+  <p class="part-sub">仓库（Repository）可以理解成一个「带历史记录的网盘文件夹」。下面 6 步，全程用网页点鼠标完成。</p>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div class="body">
+      <h4>登录后，点右上角的「＋」号 → 选 New repository</h4>
+      <p>登录 <code>github.com</code> 后，页面右上角有一个头像和一个 <b>＋</b> 号。点开它，在菜单里选第一项 <b>New repository</b>（新建仓库）。</p>
+      <div class="screen">
+        <div class="screen-bar">github.com 登录后的右上角</div>
+        <div class="screen-body">
+          <div class="gh-row" style="justify-content:flex-end;gap:10px;">
+            <span class="pill">Notifications</span>
+            <span class="pill" style="background:#fbeef0;color:#9a2d3b;">＋ New ▾</span>
+            <span class="gh-owner">你的头像</span>
+          </div>
+          <p style="font-size:13px;color:#656d76;">点 <b>＋</b> → 菜单第一项就是 <b>New repository</b>。<br>
+          <span class="jp">repository（仓库）在日语里叫 リポジトリ。</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">2</div>
+    <div class="body">
+      <h4>填写仓库名（Repository name）</h4>
+      <p>在 <b>Repository name</b> 输入框里写个名字。建议用英文小写、短一点，比如 <code>my-first-repo</code> 或 <code>japanese-notes</code>（后面用来放日语笔记很合适）。</p>
+      <div class="screen">
+        <div class="screen-bar">Create a new repository</div>
+        <div class="screen-body">
+          <div class="gh-h">Create a new repository</div>
+          <div class="gh-row">
+            <span class="gh-label" style="margin:0;">Owner</span>
+            <span class="gh-owner">你的用户名 ▾</span>
+            <span class="gh-slash">/</span>
+          </div>
+          <span class="gh-label">Repository name <span class="badge">2</span></span>
+          <input class="gh-input" value="japanese-notes" readonly>
+          <div class="gh-hint">Great repository names are short and memorable.</div>
+        </div>
+      </div>
+      <div class="tip">小提示：名字只能含字母、数字、横杠 <code>-</code> 和下划线 <code>_</code>，不能空格。仓库名以后能改，先随便起一个也行。</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">3</div>
+    <div class="body">
+      <h4>（可选）写一行描述 Description</h4>
+      <p><b>Description (optional)</b> 是选填的「一句话介绍」。可以留空，也可以写「我的日语学习笔记」之类。</p>
+      <div class="screen">
+        <div class="screen-bar">Create a new repository</div>
+        <div class="screen-body">
+          <span class="gh-label">Description (optional)</span>
+          <input class="gh-input" value="我的日语学习笔记" readonly>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">4</div>
+    <div class="body">
+      <h4>选择 Public（公开）</h4>
+      <p>下面有 <b>Public</b> 和 <b>Private</b> 两个选项。新手选 <b>Public</b> 即可（所有人可见，但只是你放的文件，不用担心隐私；而且公开仓库免费）。</p>
+      <div class="screen">
+        <div class="screen-bar">Create a new repository</div>
+        <div class="screen-body">
+          <div class="gh-radio sel"><span class="dot on"></span><div><b>Public</b> <span style="color:#656d76;">Anyone on the internet can see this repository. You choose who can commit.</span></div></div>
+          <div class="gh-radio"><span class="dot"></span><div><b>Private</b> <span style="color:#656d76;">You choose who can see and commit to this repository.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">5</div>
+    <div class="body">
+      <h4>勾选「Add a README file」</h4>
+      <p>往下翻，勾选 <b>Add a README file</b>。README 就是仓库的「首页说明」，勾上后 GitHub 会自动帮你生成一个，省得你手动建。建议勾上。</p>
+      <div class="screen">
+        <div class="screen-bar">Create a new repository · 初始化选项</div>
+        <div class="screen-body">
+          <div class="gh-check"><span class="box on"></span><div><b>Add a README file</b><br><span style="color:#656d76;">Initialize this repository with a README.</span></div></div>
+          <div class="gh-check"><span class="box"></span><div>Add .gitignore &nbsp; <span class="gh-owner">None ▾</span></div></div>
+          <div class="gh-check"><span class="box"></span><div>Choose a license &nbsp; <span class="gh-owner">None ▾</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">6</div>
+    <div class="body">
+      <h4>点绿色按钮「Create repository」</h4>
+      <p>页面最下方有一个绿色按钮 <b>Create repository</b>，点它！几秒后你就进入新仓库页面，说明建仓成功。</p>
+      <div class="screen">
+        <div class="screen-bar">Create a new repository</div>
+        <div class="screen-body" style="text-align:right;">
+          <button class="gh-btn">Create repository</button>
+        </div>
+      </div>
+      <div class="success" style="margin-top:10px;">成功：看到仓库页面（文件列表里有一个 <code>README.md</code>）→ 恭喜，你的第一个 GitHub 仓库建好了！</div>
+    </div>
+  </div>
+
+  <!-- ========== PART 2 ========== -->
+  <h2 class="part">第二部分：建好之后怎么操作</h2>
+  <p class="part-sub">仓库建好只是开始。下面是你之后最常用、也必须看懂的 5 个操作。建议照着做一次，印象最深。</p>
+
+  <div class="step">
+    <div class="num">A</div>
+    <div class="body">
+      <h4>上传文件（拖拽即可，不用命令行）</h4>
+      <p>在仓库页面点 <b>Add file</b> → <b>Upload files</b>，然后把电脑里的文件直接拖进虚线框（或点 choose your files 选文件）。</p>
+      <div class="screen">
+        <div class="screen-bar">你的仓库页面</div>
+        <div class="screen-body">
+          <div class="gh-row" style="justify-content:space-between;">
+            <span class="pill">README.md</span>
+            <span class="gh-btn ghost">Add file ▾</span>
+          </div>
+          <div style="border:2px dashed #d0d7de;border-radius:10px;padding:22px;text-align:center;color:#656d76;font-size:13px;">把文件拖到这里<br>或点 choose your files</div>
+        </div>
+      </div>
+      <div class="tip">这就是你「上传之后」最常用的动作：把日语笔记、图片、文档拖进来就行。</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">B</div>
+    <div class="body">
+      <h4>写提交说明（Commit message）</h4>
+      <p>上传或改动文件后，页面底部会出现 <b>Commit changes</b> 区域。在 <b>Add a commit message</b> 里写一句话说明「这次改了什么」，比如 <code>添加第一天五十音图笔记</code>，然后点绿色 <b>Commit changes</b>。</p>
+      <div class="screen">
+        <div class="screen-bar">Commit changes</div>
+        <div class="screen-body">
+          <span class="gh-label">Add a commit message</span>
+          <input class="gh-input" value="添加第一天五十音图笔记" readonly>
+          <div class="gh-hint">Extended description（选填，写更细的说明）</div>
+          <div style="text-align:right;margin-top:10px;"><button class="gh-btn">Commit changes</button></div>
+        </div>
+      </div>
+      <div class="tip">每一次「提交（commit）」都会留下记录，你可以随时回看改了什么——这就是 GitHub 最厉害的「历史版本」功能。<span class="jp">commit 在日语里叫 コミット。</span></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">C</div>
+    <div class="body">
+      <h4>编辑 / 删除已有文件</h4>
+      <p>点开任意文件（如 <code>README.md</code>），右上角有 <b>Edit</b> 按钮可以改内容；改完同样写 commit message 提交。想删文件，进文件后点右上角「···」菜单 → <b>Delete file</b>。</p>
+      <div class="screen">
+        <div class="screen-bar">README.md 文件页面</div>
+        <div class="screen-body">
+          <div class="gh-row" style="justify-content:flex-end;gap:8px;">
+            <span class="gh-btn ghost">Edit</span>
+            <span class="gh-btn ghost">···</span>
+          </div>
+          <div class="gh-hint">Edit = 改内容；··· → Delete file = 删除</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">D</div>
+    <div class="body">
+      <h4>填仓库简介（About）</h4>
+      <p>仓库页面右侧有 <b>About</b> 栏，点右边的设置（齿轮）图标可以写一句话简介、加网址链接、选一个「话题标签（Topics）」。这是别人（和未来的你）快速了解这个仓库的入口。</p>
+      <div class="screen">
+        <div class="screen-bar">仓库右侧栏</div>
+        <div class="screen-body">
+          <div class="gh-h" style="font-size:15px;">About &nbsp; <span class="gh-owner">(设置)</span></div>
+          <div class="gh-hint">在这里写简介 / 加链接 / 加 Topics 标签</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">E</div>
+    <div class="body">
+      <h4>（进阶）用 GitHub Pages 做个人网页练日语</h4>
+      <p>等你放了一些日语笔记，可以把仓库变成一个网页：进仓库 <b>Settings</b> → 左侧 <b>Pages</b> → Source 选 <b>main</b> 分支 → Save。之后会得到一个网址，谁都能打开看你的日语笔记。这是练写作的好舞台。</p>
+      <div class="screen">
+        <div class="screen-bar">Settings → Pages</div>
+        <div class="screen-body">
+          <span class="gh-label">Branch（分支）</span>
+          <div class="gh-row"><span class="gh-owner">main ▾</span><span class="gh-owner">/ root ▾</span><button class="gh-btn">Save</button></div>
+          <div class="gh-hint">保存后稍等一两分钟，就能用网址访问你的网页。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== GLOSSARY ========== -->
+  <h2 class="part">附：界面英文 → 中文 → 日语 小抄</h2>
+  <p class="part-sub">GitHub 界面几乎全是英语，但很多词在日语里是直接音译的「片假名」。记一个英语词，日语那栏基本自动会读——这就是你两个一起学的最大红利。</p>
+  <table class="gloss">
+    <tr><th>英语（界面上看到的）</th><th>中文</th><th>日本語（读音）</th></tr>
+    <tr><td class="en">Repository</td><td>仓库</td><td class="jp">リポジトリ (ripojitari)</td></tr>
+    <tr><td class="en">New repository</td><td>新建仓库</td><td class="jp">新しいリポジトリ</td></tr>
+    <tr><td class="en">Commit</td><td>提交 / 改动记录</td><td class="jp">コミット (komitto)</td></tr>
+    <tr><td class="en">Public / Private</td><td>公开 / 私有</td><td class="jp">公開 / 非公開</td></tr>
+    <tr><td class="en">README</td><td>说明文档（首页）</td><td class="jp">リードミー</td></tr>
+    <tr><td class="en">Add file</td><td>添加文件</td><td class="jp">ファイルを追加</td></tr>
+    <tr><td class="en">Upload files</td><td>上传文件</td><td class="jp">ファイルをアップロード</td></tr>
+    <tr><td class="en">Edit</td><td>编辑</td><td class="jp">編集 (へんしゅう)</td></tr>
+    <tr><td class="en">Settings</td><td>设置</td><td class="jp">設定 (せってい)</td></tr>
+    <tr><td class="en">Branch</td><td>分支</td><td class="jp">ブランチ (buranchi)</td></tr>
+    <tr><td class="en">Star</td><td>收藏</td><td class="jp">スター (sutā)</td></tr>
+  </table>
+
+  <!-- ========== UPLOAD THIS GUIDE ========== -->
+  <h2 class="part">把这份指南上传到你的仓库（闭环练习）</h2>
+  <p class="part-sub">这份 HTML 文件本身，就是你第一个要上传的「练习文件」。照下面做，等于把今天学的全用了一遍：</p>
+  <div class="step">
+    <div class="num">①</div>
+    <div class="body">
+      <h4>进入你刚建好的仓库</h4>
+      <p>登录 github.com，点左上角你的头像 → <b>Your repositories</b> → 点开 <code>japanese-notes</code>（或你起的名字）。</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="num">②</div>
+    <div class="body">
+      <h4>上传这份文件</h4>
+      <p>点 <b>Add file</b> → <b>Upload files</b>，把本地的 <code>github-first-repo-guide.html</code> 拖进去。Commit message 写 <code>上传GitHub建仓指南</code>，点 <b>Commit changes</b>。</p>
+    </div>
+  </div>
+  <div class="step">
+    <div class="num">③</div>
+    <div class="body">
+      <h4>以后随时回看</h4>
+      <p>文件就在仓库里了。任何时候登录 github.com 打开这个仓库，就能重新看这份指南——不用再问，你自己就「看得懂、做得来」。</p>
+    </div>
+  </div>
+
+  <footer>
+    本指南为离线 HTML，可双击用浏览器打开，也可上传到 GitHub 长期保存。<br>
+    下一步建议：每天用这个仓库记一条日语笔记（README 或新文件），坚持 30 天。
+  </footer>
+
+</div>
+</body>
+</html>
