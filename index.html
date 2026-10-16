@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的日语练习本 | 日本語練習ノート</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --border:#e3e6ea; --text:#1f2328; --muted:#656d76;
+    --pink:#c2185b; --pink-soft:#fbe9f0; --blue:#0969da; --green:#1f883d;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei","Hiragino Sans",sans-serif;line-height:1.7;}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 18px 70px;}
+  header.top{background:linear-gradient(135deg,#c2185b,#e0638a);color:#fff;border-radius:16px;padding:26px 28px;margin-bottom:22px;}
+  header.top h1{margin:0 0 6px;font-size:24px;font-weight:600;}
+  header.top p{margin:0;opacity:.92;font-size:14px;}
+  section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:18px;}
+  h2{font-size:18px;margin:0 0 12px;color:var(--pink);border-bottom:2px dashed var(--pink-soft);padding-bottom:8px;}
+  .hint{font-size:13px;color:var(--muted);background:#f6f8fa;border-radius:8px;padding:8px 12px;margin-bottom:12px;}
+  /* daily sentence */
+  .sentence{font-size:22px;font-weight:600;color:var(--text);}
+  .romaji{color:var(--blue);font-size:14px;margin:2px 0;}
+  .meaning{color:var(--muted);font-size:15px;}
+  /* kana chart */
+  table.kana{width:100%;border-collapse:collapse;font-size:15px;}
+  table.kana th,table.kana td{border:1px solid var(--border);text-align:center;padding:7px 4px;}
+  table.kana th{background:#f6f8fa;color:var(--muted);font-weight:600;}
+  table.kana td .jp{font-size:18px;font-weight:600;}
+  table.kana td .ro{display:block;font-size:11px;color:var(--muted);}
+  /* vocab */
+  table.vocab{width:100%;border-collapse:collapse;font-size:14px;}
+  table.vocab th,table.vocab td{border:1px solid var(--border);padding:8px 10px;text-align:left;}
+  table.vocab th{background:#f6f8fa;font-size:13px;}
+  table.vocab td.jp{font-weight:600;color:var(--pink);}
+  /* log */
+  ul.log{margin:0;padding-left:20px;font-size:14px;}
+  ul.log li{margin:4px 0;}
+  footer{text-align:center;font-size:12.5px;color:var(--muted);margin-top:24px;}
+  .edit{color:var(--green);font-weight:600;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <h1>我的日语练习本</h1>
+    <p>日本語練習ノート · 用 GitHub Pages 做的个人网页 · 每天进步一点点</p>
+  </header>
+
+  <!-- ============ 今日一句 ============ -->
+  <section>
+    <h2>今日一句（まいにち一文）</h2>
+    <div class="hint">把下面的日文换成你今天想记的句子。改完记得在 GitHub 提交（commit）。</div>
+    <!-- 改这里：把日文、读音、中文换成你自己的 -->
+    <div class="sentence">こんにちは、世界。</div>
+    <div class="romaji">Konnichiwa, sekai.</div>
+    <div class="meaning">你好，世界。</div>
+  </section>
+
+  <!-- ============ 五十音图 ============ -->
+  <section>
+    <h2>五十音图（ひらがな）</h2>
+    <div class="hint">平假名对照表，随时查。读音在汉字下方。</div>
+    <table class="kana">
+      <tr><th></th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr>
+      <tr><th>あ</th><td><span class="jp">あ</span><span class="ro">a</span></td><td><span class="jp">い</span><span class="ro">i</span></td><td><span class="jp">う</span><span class="ro">u</span></td><td><span class="jp">え</span><span class="ro">e</span></td><td><span class="jp">お</span><span class="ro">o</span></td></tr>
+      <tr><th>か</th><td><span class="jp">か</span><span class="ro">ka</span></td><td><span class="jp">き</span><span class="ro">ki</span></td><td><span class="jp">く</span><span class="ro">ku</span></td><td><span class="jp">け</span><span class="ro">ke</span></td><td><span class="jp">こ</span><span class="ro">ko</span></td></tr>
+      <tr><th>さ</th><td><span class="jp">さ</span><span class="ro">sa</span></td><td><span class="jp">し</span><span class="ro">shi</span></td><td><span class="jp">す</span><span class="ro">su</span></td><td><span class="jp">せ</span><span class="ro">se</span></td><td><span class="jp">そ</span><span class="ro">so</span></td></tr>
+      <tr><th>た</th><td><span class="jp">た</span><span class="ro">ta</span></td><td><span class="jp">ち</span><span class="ro">chi</span></td><td><span class="jp">つ</span><span class="ro">tsu</span></td><td><span class="jp">て</span><span class="ro">te</span></td><td><span class="jp">と</span><span class="ro">to</span></td></tr>
+      <tr><th>な</th><td><span class="jp">な</span><span class="ro">na</span></td><td><span class="jp">に</span><span class="ro">ni</span></td><td><span class="jp">ぬ</span><span class="ro">nu</span></td><td><span class="jp">ね</span><span class="ro">ne</span></td><td><span class="jp">の</span><span class="ro">no</span></td></tr>
+      <tr><th>は</th><td><span class="jp">は</span><span class="ro">ha</span></td><td><span class="jp">ひ</span><span class="ro">hi</span></td><td><span class="jp">ふ</span><span class="ro">fu</span></td><td><span class="jp">へ</span><span class="ro">he</span></td><td><span class="jp">ほ</span><span class="ro">ho</span></td></tr>
+      <tr><th>ま</th><td><span class="jp">ま</span><span class="ro">ma</span></td><td><span class="jp">み</span><span class="ro">mi</span></td><td><span class="jp">む</span><span class="ro">mu</span></td><td><span class="jp">め</span><span class="ro">me</span></td><td><span class="jp">も</span><span class="ro">mo</span></td></tr>
+      <tr><th>や</th><td><span class="jp">や</span><span class="ro">ya</span></td><td></td><td><span class="jp">ゆ</span><span class="ro">yu</span></td><td></td><td><span class="jp">よ</span><span class="ro">yo</span></td></tr>
+      <tr><th>ら</th><td><span class="jp">ら</span><span class="ro">ra</span></td><td><span class="jp">り</span><span class="ro">ri</span></td><td><span class="jp">る</span><span class="ro">ru</span></td><td><span class="jp">れ</span><span class="ro">re</span></td><td><span class="jp">ろ</span><span class="ro">ro</span></td></tr>
+      <tr><th>わ</th><td><span class="jp">わ</span><span class="ro">wa</span></td><td></td><td><span class="jp">を</span><span class="ro">wo</span></td><td></td><td><span class="jp">ん</span><span class="ro">n</span></td></tr>
+    </table>
+  </section>
+
+  <!-- ============ 我的单词本 ============ -->
+  <section>
+    <h2>我的单词本（単語帳）</h2>
+    <div class="hint">每学到新词就加一行。看前两行示例，照格式往下加。</div>
+    <table class="vocab">
+      <tr><th>日语</th><th>读音</th><th>中文</th><th>例句</th></tr>
+      <!-- 示例行，可删可改 -->
+      <tr><td class="jp">猫</td><td>ねこ (neko)</td><td>猫</td><td>これは猫です。(这是猫。)</td></tr>
+      <tr><td class="jp">食べる</td><td>たべる (taberu)</td><td>吃</td><td>りんごを食べる。(吃苹果。)</td></tr>
+      <!-- 在这里往下加你的单词：复制上面一行，改成你的内容 -->
+    </table>
+  </section>
+
+  <!-- ============ 学习记录 ============ -->
+  <section>
+    <h2>学习记录（勉強ログ）</h2>
+    <div class="hint">每完成一天就加一条，能看到自己的坚持。</div>
+    <ul class="log">
+      <li>2026-10-16：注册 GitHub，建好仓库，学会五十音图あ行。</li>
+      <!-- 在这里加：<li>日期：今天学了什么</li> -->
+    </ul>
+  </section>
+
+  <footer>
+    本页由 GitHub Pages 托管 · 在仓库里改 index.html 并提交，网页会自动更新。<br>
+    <span class="edit">编辑方法：</span>GitHub 打开 index.html → 点 Edit → 改文字 → 写 commit message → Commit changes。
+  </footer>
+
+</div>
+</body>
+</html>
